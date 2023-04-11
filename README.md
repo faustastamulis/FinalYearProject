@@ -1,1 +1,6 @@
 # FinalYearProject
+## Introduction
+In this project, I built a web application for patients to make medical appointments. I used SpringBoot, ReactJS and MongoDB as the main frameworks for our web application, user authentication and data storage. I used AWS and DockerHub as our cloud platforms to deploy the Web Application and Github for controlling the source code to save the work. This project is mainly written in java and the react framework and a few other languages such as HTML, Javascript and CSS.The motivation for me to make this web application was because i found it quite difficult to get appointments for medical circumstances. For example getting a doctors appointment would be a lot easier if you had an account with your GP and you logged on and can book an appointment with ease. I find this would be a lot easier for a lot of people because it would save the effort of having to ring up and wait on the phone to book an appointment when you could just do it on your mobile phone or website.
+
+This project is a research project as it will allow us to get a better understanding of the work that goes into making a high-end web application. It would also allow us to get a better comprehension of the different languages and frameworks that we will be using.
+
