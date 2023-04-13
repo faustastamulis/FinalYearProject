@@ -1,16 +1,10 @@
 import React from 'react';
 
-function AboutUs(){
+function Aboutus(){
     return(
-        <div className="container">
-            <div className="card mt-4">
-                <div className="card-body">
-                    <h2>About us Page</h2>
-                </div>
-            </div>
-        </div>
+        <h1>About</h1>
     );
 
 }
 
-export default AboutUs;
+export default Aboutus;

@@ -1,16 +1,10 @@
 import React from 'react';
 
-function ContactUs(){
+function Contactus(){
     return(
-        <div className="container">
-            <div className="card mt-4">
-                <div className="card-body">
-                    <h2>Contact us Page</h2>
-                </div>
-            </div>
-        </div>
+        <h1>Contact</h1>
     );
 
 }
 
-export default ContactUs;
+export default Contactus;
