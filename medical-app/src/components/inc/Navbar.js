@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function Navbar(){
     return(
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <Link to="/" class="navbar-brand">ATU Medical</Link>
+        <Link to="/home" class="navbar-brand">ATU Medical</Link>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
