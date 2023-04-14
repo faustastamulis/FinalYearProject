@@ -25,6 +25,7 @@ Click the following link for the screencast of the project.
 ## Technologies Used
 * SpringBoot
 * ReactJS
+* EmailJS
 * MongoDB
 * NodeJS
 * Docker
