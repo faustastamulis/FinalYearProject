@@ -1,5 +1,6 @@
 import React, {useRef} from "react";
 import emailjs from '@emailjs/browser';
+import { RegisterButton } from "../Styles/RegisterStyles";
 
 const Result =() =>{
     return(
@@ -20,7 +21,6 @@ function Contactus(){
         });
     }
     return(
-        
         <form ref={form} onSubmit={sendEmail}>
             <div className="formWord">
                 <h2>Contact Page</h2>

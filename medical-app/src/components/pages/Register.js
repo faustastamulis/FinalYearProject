@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import { Link } from 'react-router-dom';
+import { RegisterButton} from "../Styles/RegisterStyles";
+import {body} from "../Styles/style.css"
+
 
 export const Register = (props) => {
     const [email, setEmail] = useState('');
@@ -9,20 +13,34 @@ export const Register = (props) => {
         e.preventDefault();
         console.log(email);
     }
-
+    
     return (
-        <div className="auth-form-container">
-            <h2>Register</h2>
-        <form className="register-form" onSubmit={handleSubmit}>
-            <label htmlFor="name">Full name</label>
-            <input value={name} name="name" onChange={(e) => setName(e.target.value)} id="name" placeholder="full Name" />
-            <label htmlFor="email">email</label>
-            <input value={email} onChange={(e) => setEmail(e.target.value)}type="email" placeholder="youremail@gmail.com" id="email" name="email" />
-            <label htmlFor="password">password</label>
+            <body>
+            <h2 style={{ color: "#FFFF" }}> Registeration</h2>
+            <h4>Please enter your details bellow</h4><form className="register-form" onSubmit={handleSubmit}>
+            <label htmlFor="name" style={{ color: "#FFF" }}>Full name</label>
+            <br />
+            <input value={name} name="name" onChange={(e) => setName(e.target.value)} id="name" placeholder="Full Name" />
+            <br />
+            <label htmlFor="email" style={{ color: "#FFF" }}>Email</label>
+            <br />
+            <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="youremail@gmail.com" id="email" name="email" />
+            <br />
+            <label htmlFor="password" style={{ color: "#FFF" }}>Password</label>
+            <br />
             <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="********" id="password" name="password" />
-            <button type="submit">Log In</button>
-        </form>
-        <button className="link-btn" onClick={() => props.onFormSwitch('login')}>Already have an account? Login here.</button>
-    </div>
+            <br />
+            <Link to="/login">
+                <RegisterButton type="submit">Register</RegisterButton>
+            </Link>
+            
+            </form>
+            <h6>Already have an account?</h6>
+                <Link to="/login">
+                    <RegisterButton className="link-btn" onClick={() => props.onFormSwitch('login')}
+                    >Login</RegisterButton>
+                </Link>   
+            </body> 
+        
     )
 }
