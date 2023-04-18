@@ -23,7 +23,7 @@ function Contactus(){
     }
     return(
         <body>
-        <Container className="containerClass">
+        <Container className="container__class">
         <form ref={form} onSubmit={sendEmail}>
             <div className="formWord">
                 <h2>Contact Page</h2>

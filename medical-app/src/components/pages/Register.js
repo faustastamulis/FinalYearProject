@@ -17,7 +17,7 @@ export const Register = (props) => {
     
     return (
             <body>
-            <Container className="containerClass">
+            <Container className="container__class">
             <h2 style={{ color: "#FFFF" }}> Registeration</h2>
             <h4>Please enter your details bellow</h4><form className="register-form" onSubmit={handleSubmit}>
             <label htmlFor="name" style={{ color: "#FFF" }}>Full name</label>

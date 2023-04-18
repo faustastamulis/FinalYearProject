@@ -5,9 +5,9 @@ function Navbar() {
   return (
     <body>
       <header>
+      <a class="logo" href="/home"><img src={require('../images/logo.png') }/></a>
         <nav>
           <ul class="nav__links">
-          <Link to="/home" class="navbar__brand">ATU Medical</Link>
             <li><a href="/home">Home</a></li>
             <li><a href="/about">About</a></li>
             <li><a href="/contact">Contact</a></li>

@@ -6,7 +6,7 @@ import { Container } from 'react-bootstrap';
 function Home() {
     return (
         <body className='homebody'>
-            <Container className='homecontainer'>
+            <Container className="homecontainer">
             <h1 className='homeh1'>Welcome to ATU Medical</h1>
             <h3 className='homeh3'>Here we make booking appointments easy</h3>
             <br />

@@ -15,7 +15,7 @@ export const Login = (props) => {
 
     return (
         <body>
-            <Container className="containerClass">
+            <Container className="container__class">
             <h2 style={{ color: "#FFFF" }}>Login</h2>
             <form className="login-form" onSubmit={handleSubmit}>
                 <label htmlFor="email" style={{color: "white"}}>Email </label>
