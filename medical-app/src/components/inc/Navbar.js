@@ -1,35 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Navbar(){
-    return(
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <Link to="/home" class="navbar-brand">ATU Medical</Link>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-            <Link to="/home" class="nav-link active">Home</Link>
-            </li>
-            <li class="nav-item">
-            <Link to="/about" class="nav-link active">About</Link>
-            </li>
-            <li class="nav-item">
-            <Link to="/contact" class="nav-link active">Contact Us</Link>
-            </li>
-            <li class="nav-item">
-            <Link to="/register" class="nav-link active">Register</Link>
-            </li>
-            <li class="nav-item">
-            <Link to="/login" class="nav-link active">Login</Link>
-            </li>
+function Navbar() {
+  return (
+    <body>
+      <header>
+        <nav>
+          <ul class="nav__links">
+          <Link to="/home" class="navbar__brand">ATU Medical</Link>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
           </ul>
-        </div>
-      </nav>
-      
-    );
+        </nav>
+        <a class="cta" href="/login">Login</a>
+      </header>
+    </body>
+
+  );
 
 }
 

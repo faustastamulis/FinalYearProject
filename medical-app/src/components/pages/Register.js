@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 import { RegisterButton} from "../Styles/RegisterStyles";
 import {body} from "../Styles/style.css"
+import { Container } from "react-bootstrap";
 
 
 export const Register = (props) => {
@@ -16,6 +17,7 @@ export const Register = (props) => {
     
     return (
             <body>
+            <Container className="containerClass">
             <h2 style={{ color: "#FFFF" }}> Registeration</h2>
             <h4>Please enter your details bellow</h4><form className="register-form" onSubmit={handleSubmit}>
             <label htmlFor="name" style={{ color: "#FFF" }}>Full name</label>
@@ -40,6 +42,7 @@ export const Register = (props) => {
                     <RegisterButton className="link-btn" onClick={() => props.onFormSwitch('login')}
                     >Login</RegisterButton>
                 </Link>   
+                </Container>
             </body> 
         
     )

@@ -1,6 +1,7 @@
 import React, {useRef} from "react";
 import emailjs from '@emailjs/browser';
 import { RegisterButton } from "../Styles/RegisterStyles";
+import { Container } from "react-bootstrap";
 
 const Result =() =>{
     return(
@@ -21,6 +22,8 @@ function Contactus(){
         });
     }
     return(
+        <body>
+        <Container className="containerClass">
         <form ref={form} onSubmit={sendEmail}>
             <div className="formWord">
                 <h2>Contact Page</h2>
@@ -42,12 +45,11 @@ function Contactus(){
                 <br/>
                 <textarea name="message" required></textarea>
                 <br />
-                <button>SUBMIT</button>
-            <div className="row">
-                
-            </div>
+                <button className="homebutton">SUBMIT</button>
             </div>
         </form>
+        </Container>
+        </body>
     );
 
 }

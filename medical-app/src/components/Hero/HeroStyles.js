@@ -13,7 +13,7 @@ export const HeroImage = styled.image`
 	object-fit: cover;
 	width: 100%;
 	height: 100%;
-	background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.1));
+	background: linear-gradient(to right, rgba(120, 120, 120, 0.7), rgba(0, 0, 0, 0.1));
 	top: 0;
 	position: absolute;
 	z-index: -1;
@@ -25,7 +25,7 @@ export const HeroText = styled.p`
 	line-height: 24px;
 	text-align: center;
 	letter-spacing: 2px;
-	color: #FFF;
+	color: #646464;
 `;
 
 export const ButtonWrapper = styled.div`

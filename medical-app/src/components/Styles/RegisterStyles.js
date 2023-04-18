@@ -20,7 +20,6 @@ export const RegisterImage = styled.image`
 `;
 
 export const RegisterButton = styled(Button)`
-
 	color: black;
 
 	&:before {
