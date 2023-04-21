@@ -14,12 +14,34 @@ export const Register = (props) => {
         e.preventDefault();
         console.log(email);
     }
+
+   async function registerUser(event){
+    event.preventDefault()
+
+    const response = await fetch('http:/localhost:1337/api/register', {
+        method: 'POST',
+        headers : {
+            'Content-type' : 'application/json',
+            'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+            name,
+            email,
+            pass,
+        }),
+    })
+
+    const data = await response.json()
+
+    console.log(data)
+   } 
     
     return (
             <body>
             <Container className="container__class">
             <h2 style={{ color: "#FFFF" }}> Registeration</h2>
-            <h4>Please enter your details bellow</h4><form className="register-form" onSubmit={handleSubmit}>
+            <h4>Please enter your details bellow</h4>
+            <form className="register-form" onSubmit={registerUser}>
             <label htmlFor="name" style={{ color: "#FFF" }}>Full name</label>
             <br />
             <input value={name} name="name" onChange={(e) => setName(e.target.value)} id="name" placeholder="Full Name" />
@@ -32,9 +54,9 @@ export const Register = (props) => {
             <br />
             <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="********" id="password" name="password" />
             <br />
-            <Link to="/login">
+            
                 <RegisterButton type="submit">Register</RegisterButton>
-            </Link>
+           
             
             </form>
             <h6>Already have an account?</h6>
