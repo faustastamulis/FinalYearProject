@@ -14,7 +14,7 @@ export const Login = (props) => {
     }
 
     return (
-        <body>
+        <body className="body__class">
             <Container className="container__class">
             <h2 style={{ color: "#FFFF" }}>Login</h2>
             <form className="login-form" onSubmit={handleSubmit}>

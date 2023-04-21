@@ -6,19 +6,47 @@ import { Container } from "react-bootstrap";
 
 
 export const Register = (props) => {
-    const [email, setEmail] = useState('');
-    const [pass, setPass] = useState('');
-    const [name, setName] = useState('');
+    const [email, setEmail] = useState("");
+    const [pass, setPass] = useState("");
+    const [name, setName] = useState("");
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(email);
+
+        let result = await fetch(
+            'http://localhost:5000/register', {
+                method: "post",
+                body: JSON.stringify({ name, email, pass }),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                }
+            })
+
+            if (result.status === 200) {
+                try {
+                  const data = await result.json();
+                  console.warn(data);
+                  alert("Data saved successfully");
+                  setEmail("");
+                  setName("");
+                  setPass("");
+                } catch (e) {
+                  console.error(e);
+                  alert("This email is already registered");
+                }
+              } else {
+                const errorText = await result.text();
+                console.error(errorText);
+                alert("Something went wrong");
+              }
     }
 
-   async function registerUser(event){
+
+ /*  async function registerUser(event){
     event.preventDefault()
 
-    const response = await fetch('http:/localhost:1337/api/register', {
+    const response = await fetch('', {
         method: 'POST',
         headers : {
             'Content-type' : 'application/json',
@@ -34,14 +62,14 @@ export const Register = (props) => {
     const data = await response.json()
 
     console.log(data)
-   } 
-    
+   } */
+
     return (
             <body>
             <Container className="container__class">
             <h2 style={{ color: "#FFFF" }}> Registeration</h2>
             <h4>Please enter your details bellow</h4>
-            <form className="register-form" onSubmit={registerUser}>
+            <form className="register-form">
             <label htmlFor="name" style={{ color: "#FFF" }}>Full name</label>
             <br />
             <input value={name} name="name" onChange={(e) => setName(e.target.value)} id="name" placeholder="Full Name" />
@@ -55,7 +83,7 @@ export const Register = (props) => {
             <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="********" id="password" name="password" />
             <br />
             
-                <RegisterButton type="submit">Register</RegisterButton>
+                <RegisterButton type="submit" onClick={handleSubmit}>Register</RegisterButton>
            
             
             </form>

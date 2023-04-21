@@ -10,23 +10,29 @@ const User = require('./models/user.model')
 app.use(cors())
 app.use(express.json())
 
-mongoose.connect('mongodb://localhost:27017')
+mongoose.connect('mongodb+srv://root:root@cluster0.rmbquaq.mongodb.net/Node-API?retryWrites=true&w=majority')
+.then(()=> console.log('Connected to MongoDB'))
+.catch(err => console.log(err))
 
-app.post('/api/register', async (req,res) => {
-    console.log(req.body)
+app.post("/register", async (req, resp) => {
     try {
-     await User.create({
-            name: req.body.name,
-            email: req.body.email,
-            pass: req.body.pass,
-        })
-        res.json({status: 'ok'})
-    } catch (error) {
-        res.json({ status: 'error', error: 'Duplicate email' })
+        const user = new User(req.body);
+        let result = await user.save();
+        result = result.toObject();
+        if (result) {
+            delete result.password;
+            resp.send(req.body);
+            console.log(result);
+        } else {
+            console.log("User already register");
+        }
+  
+    } catch (e) {
+        resp.send("Something Went Wrong");
     }
-})
+});
 
-app.post('/api/login', async (req,res) =>{
+app.post('/login', async (req,res) =>{
     const user = await User.findOne({ 
         email: req.body.email, 
         pass: req.body.pass
@@ -37,8 +43,8 @@ app.post('/api/login', async (req,res) =>{
     } else{
         return res.json({status: 'ok', user: false})
     }
-})
+});
 
-app.listen(1337, ()=>{
-    console.log('Server started on 1337')
+app.listen(5000, ()=>{
+    console.log('Node API is running on port 5000')
 })
