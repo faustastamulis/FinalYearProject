@@ -7,6 +7,8 @@ import Navbar from './components/inc/Navbar';
 import {BrowserRouter as Router, Route, Routes, BrowserRouter} from 'react-router-dom';
 import { Register } from './components/pages/Register';
 import { Login } from './components/pages/Login';
+import { Layout } from './components/pages/Layout';
+import { ShowNavBar } from './components/ShowNavBar/ShowNavBar';
 
 function App() {
   const [currentForm, setCurrentForm] = useState('login');
@@ -15,16 +17,18 @@ function App() {
   }
 
   return (
-    
-
       <div>
-        <Navbar></Navbar>
+        <ShowNavBar>
+        <Navbar/>
+        </ShowNavBar>
+        
           <Routes>
           <Route path="/home" element={<Home/>}/>
           <Route path="/about" element={<About/>}/>
           <Route path="/contact" element={<Contact/>}/>
           <Route path="/register" element={<Register onFormSwitch={toggleForm}/>}/>
           <Route path="/login" element={<Login onFormSwitch={toggleForm}/>}/>
+          <Route path="/main" element={<Layout/>} />
           </Routes>
       </div>
   );

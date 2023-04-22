@@ -27,7 +27,7 @@ export const Register = (props) => {
                 try {
                   const data = await result.json();
                   console.warn(data);
-                  alert("Data saved successfully");
+                  alert("User registered successfully");
                   setEmail("");
                   setName("");
                   setPass("");
@@ -41,28 +41,6 @@ export const Register = (props) => {
                 alert("Something went wrong");
               }
     }
-
-
- /*  async function registerUser(event){
-    event.preventDefault()
-
-    const response = await fetch('', {
-        method: 'POST',
-        headers : {
-            'Content-type' : 'application/json',
-            'Accept': 'application/json',
-        },
-        body: JSON.stringify({
-            name,
-            email,
-            pass,
-        }),
-    })
-
-    const data = await response.json()
-
-    console.log(data)
-   } */
 
     return (
             <body>

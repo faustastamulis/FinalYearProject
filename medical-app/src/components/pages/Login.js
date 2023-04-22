@@ -3,14 +3,35 @@ import { Link } from 'react-router-dom';
 import styled from "styled-components";
 import { RegisterButton } from "../Styles/RegisterStyles";
 import { Container } from "react-bootstrap";
+import { message } from "antd";
 
 export const Login = (props) => {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(email);
+
+        const response = await fetch(
+            'http://localhost:5000/login', {
+                method: "post",
+                body: JSON.stringify({email, pass}),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                }
+            })
+
+            const data = await response.json()
+
+            if (data.user) {
+                localStorage.setItem('token', data.user)
+                message.success("Login Successfully");
+                window.location.href = '/main'
+            } else {
+                alert('Please check your username and password')
+            }
     }
 
     return (
