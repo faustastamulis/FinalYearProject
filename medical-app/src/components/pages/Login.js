@@ -4,10 +4,13 @@ import styled from "styled-components";
 import { RegisterButton } from "../Styles/RegisterStyles";
 import { Container } from "react-bootstrap";
 import { message } from "antd";
+import {bcrypt} from "bcryptjs";
 
 export const Login = (props) => {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
+
+    const bcrypt = require('bcryptjs');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -30,7 +33,7 @@ export const Login = (props) => {
                 message.success("Login Successfully");
                 window.location.href = '/main'
             } else {
-                alert('Please check your username and password')
+                message.error('Please check your username and password')
             }
     }
 

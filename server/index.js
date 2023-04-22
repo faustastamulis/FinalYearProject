@@ -4,6 +4,7 @@ const cors = require('cors')
 const mongoose = require('mongoose')
 const User = require('./models/user.model')
 const jwt = require('jsonwebtoken')
+const bcrypt = require('bcryptjs')
 
 app.use(cors())
 app.use(express.json())
@@ -14,11 +15,13 @@ mongoose.connect('mongodb+srv://root:root@cluster0.rmbquaq.mongodb.net/Node-API?
 
 app.post("/register", async (req, resp) => {
     try {
+        const newPassword = await bcrypt.hash(req.body.pass, 10)
+
         const user = new User(req.body);
         let result = await user.save();
         result = result.toObject();
         if (result) {
-            delete result.password;
+            delete result.newPassword;
             resp.send(req.body);
             console.log(result);
         } else {
@@ -49,6 +52,7 @@ app.post('/login', async (req,res) =>{
         return res.json({status: 'ok', user: false})
     }
 });
+
 
 app.listen(5000, ()=>{
     console.log('Node API is running on port 5000')

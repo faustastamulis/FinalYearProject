@@ -9,7 +9,7 @@ const location = useLocation();
 
     useEffect(() => {
         console.log('location changed', location);
-        if (location.pathname === '/main') {
+        if (location.pathname === '/main' || location.pathname === '/appointments' || location.pathname === '/profile' || location.pathname === '/apply-doctor') {
             setShowNavBar(false);
         } else {
             setShowNavBar(true);
