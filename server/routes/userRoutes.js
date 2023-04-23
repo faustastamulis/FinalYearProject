@@ -29,13 +29,13 @@ router.post("/getUserData", authMiddleware, authController);
 //Apply Doctor || POST
 router.post("/apply-doctor", authMiddleware, applyDoctorController);
 
-//Notifiaction  Doctor || POST
+//Notification  Doctor || POST
 router.post(
   "/get-all-notification",
   authMiddleware,
   getAllNotificationController
 );
-//Notifiaction  Doctor || POST
+//Notification  Doctor || POST
 router.post(
   "/delete-all-notification",
   authMiddleware,

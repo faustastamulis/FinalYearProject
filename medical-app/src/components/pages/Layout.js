@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "../Styles/LayoutStyles.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { message } from "antd";
+import { Badge, message } from "antd";
 import { useSelector } from "react-redux";
 import { adminMenu, userMenu } from "../Data/data";
 
@@ -47,7 +47,9 @@ export const Layout = ({ children }) => {
               <div className="content">
                 <div className="header">
                   <div className="header-content">
+                    <Badge count={user?.notifications?.length}>
                     <i class="fa-solid fa-bell"></i>
+                    </Badge>
                     <Link to="/profile">{user?.name}</Link>
                   </div>
                 </div>

@@ -80,7 +80,7 @@ const authController = async (req, res) => {
   }
 };
 
-// APpply DOctor CTRL
+// Apply Doctor CTRL
 const applyDoctorController = async (req, res) => {
   try {
     const newDoctor = await doctorModel({ ...req.body, status: "pending" });
@@ -93,20 +93,20 @@ const applyDoctorController = async (req, res) => {
       data: {
         doctorId: newDoctor._id,
         name: newDoctor.firstName + " " + newDoctor.lastName,
-        onClickPath: "/admin/docotrs",
+        onClickPath: "/admin/doctors",
       },
     });
     await userModel.findByIdAndUpdate(adminUser._id, { notifcation });
     res.status(201).send({
       success: true,
-      message: "Doctor Account Applied SUccessfully",
+      message: "Doctor Account Applied Successfully",
     });
   } catch (error) {
     console.log(error);
     res.status(500).send({
       success: false,
       error,
-      message: "Error WHile Applying For Doctotr",
+      message: "Error While Applying For Doctor",
     });
   }
 };
@@ -153,7 +153,7 @@ const deleteAllNotificationController = async (req, res) => {
     console.log(error);
     res.status(500).send({
       success: false,
-      message: "unable to delete all notifications",
+      message: "Unable to delete all notifications",
       error,
     });
   }
@@ -165,7 +165,7 @@ const getAllDocotrsController = async (req, res) => {
     const doctors = await doctorModel.find({ status: "approved" });
     res.status(200).send({
       success: true,
-      message: "Docots Lists Fetched Successfully",
+      message: "Doctors Lists Fetched Successfully",
       data: doctors,
     });
   } catch (error) {
@@ -173,7 +173,7 @@ const getAllDocotrsController = async (req, res) => {
     res.status(500).send({
       success: false,
       error,
-      message: "Errro WHile Fetching DOcotr",
+      message: "Error While Fetching Doctors List",
     });
   }
 };

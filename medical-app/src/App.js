@@ -16,7 +16,7 @@ import Doctors from "../src/components/pages/admin/Doctors";
 import NotificationPage from "./components/pages/NotificationPage";
 import Profile from "../src/components/pages/doctor/Profile";
 import BookingPage from "./components/pages/BookingPage";
-import Appointments from "../src/components/pages/Appoinments";
+import Appointments from "./components/pages/Appointments";
 import DoctorAppointments from "../src/components/pages/doctor/DoctorAppointments";
 import PublicRoute from "./components/Other/PublicRoute";
 import HomePage from "./components/pages/HomePage";
