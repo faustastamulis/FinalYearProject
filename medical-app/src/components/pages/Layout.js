@@ -16,9 +16,6 @@ export const Layout = ({ children }) => {
     navigate("/login");
   };
 
-
-
-
     const SidebarMenu = user?.isAdmin ? adminMenu : userMenu;
     return (
         <>

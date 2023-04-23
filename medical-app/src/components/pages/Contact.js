@@ -1,6 +1,5 @@
 import React, {useRef} from "react";
 import emailjs from '@emailjs/browser';
-import { RegisterButton } from "../Styles/RegisterStyles";
 import { Container } from "react-bootstrap";
 
 const Result =() =>{

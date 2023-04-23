@@ -1,75 +1,59 @@
-import React, { useState } from "react";
-import { Link } from 'react-router-dom';
-import { RegisterButton} from "../Styles/RegisterStyles";
-import {body} from "../Styles/style.css"
-import { Container } from "react-bootstrap";
+import React from "react";
+import { Form, Input, message } from "antd";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { showLoading, hideLoading } from "../redux/features/alertSlice";
 
-
-export const Register = (props) => {
-    const [email, setEmail] = useState("");
-    const [pass, setPass] = useState("");
-    const [name, setName] = useState("");
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        let result = await fetch(
-            'http://localhost:5000/register', {
-                method: "post",
-                body: JSON.stringify({ name, email, pass }),
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                }
-            })
-
-            if (result.status === 200) {
-                try {
-                  const data = await result.json();
-                  console.warn(data);
-                  alert("User registered successfully");
-                  window.location.href = '/login'
-                  setEmail("");
-                  setName("");
-                  setPass("");
-                } catch (e) {
-                  console.error(e);
-                  alert("This email is already registered");
-                }
-              } else {
-                const errorText = await result.text();
-                console.error(errorText);
-                alert("Something went wrong");
-              }
+const Register = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  //form handler
+  const onfinishHandler = async (values) => {
+    try {
+      dispatch(showLoading());
+      const res = await axios.post("http://localhost:8080/api/v1/user/register", values);
+      dispatch(hideLoading());
+      if (res.data.success) {
+        message.success("Register Successfully!");
+        navigate("/login");
+      } else {
+        message.error(res.data.message);
+      }
+    } catch (error) {
+      dispatch(hideLoading());
+      console.log(error);
+      message.error("Something Went Wrong");
     }
+  };
+  return (
+    <>
+      <div className="form-container ">
+        <Form
+          layout="vertical"
+          onFinish={onfinishHandler}
+          className="register-form"
+        >
+          <h3 className="text-center">Register From</h3>
+          <Form.Item label="Name" name="name">
+            <Input type="text" required />
+          </Form.Item>
+          <Form.Item label="Email" name="email">
+            <Input type="email" required />
+          </Form.Item>
+          <Form.Item label="Password" name="password">
+            <Input type="password" required />
+          </Form.Item>
+          <Link to="/login" className="m-2">
+            Already user login here
+          </Link>
+          <button className="btn btn-primary" type="submit">
+            Register
+          </button>
+        </Form>
+      </div>
+    </>
+  );
+};
 
-    return (
-            <body>
-            <Container className="container__class">
-            <h2 style={{ color: "#FFFF" }}> Registeration</h2>
-            <h4>Please enter your details bellow</h4>
-            <form className="register-form" onSubmit={handleSubmit}>
-            <label htmlFor="name" style={{ color: "#FFF" }}>Full name</label>
-            <br />
-            <input value={name} name="name" onChange={(e) => setName(e.target.value)} id="name" placeholder="Full Name" />
-            <br />
-            <label htmlFor="email" style={{ color: "#FFF" }}>Email</label>
-            <br />
-            <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="youremail@gmail.com" id="email" name="email" />
-            <br />
-            <label htmlFor="password" style={{ color: "#FFF" }}>Password</label>
-            <br />
-            <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="********" id="password" name="password" />
-            <br />
-                <RegisterButton type="submit">Register</RegisterButton>
-            </form>
-            <h6>Already have an account?</h6>
-                <Link to="/login">
-                    <RegisterButton className="link-btn" onClick={() => props.onFormSwitch('login')}
-                    >Login</RegisterButton>
-                </Link>   
-                </Container>
-            </body> 
-        
-    )
-}
+export default Register;
