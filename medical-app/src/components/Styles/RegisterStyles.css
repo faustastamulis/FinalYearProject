@@ -2,11 +2,16 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height: 100vh;
+	height: 80vh;
   }
   
   .register-form {
 	border: 1px solid gray;
 	padding: 30px;
+	align-items: center;
+	justify-content: center;
   }
   
+  .input__box{
+	margin-bottom: 20px;
+  }

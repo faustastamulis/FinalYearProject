@@ -9,11 +9,10 @@ const location = useLocation();
 
     useEffect(() => {
         console.log('location changed', location);
-        if (location.pathname === '/' || location.pathname === '/appointments' || location.pathname === '/profile' 
-        || location.pathname === '/apply-doctor' || location.pathname === '/admin/doctors' || location.pathname === '/admin/users' || location.pathname === '/doctor/book-appointment/:doctorId' || location.pathname === '/doctor/profile/:id' || location.pathname === '/notification') {
-            setShowNavBar(false);
-        } else {
+        if (location.pathname === '/login' || location.pathname === '/contact' || location.pathname === '/home' || location.pathname === '/about' ||  location.pathname === '/register') {
             setShowNavBar(true);
+        } else {
+            setShowNavBar(false);
         }
     }, [location]);
 

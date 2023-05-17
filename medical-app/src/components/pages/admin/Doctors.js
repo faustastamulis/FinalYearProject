@@ -61,7 +61,7 @@ const Doctors = () => {
       dataIndex: "status",
     },
     {
-      title: "phone",
+      title: "Phone",
       dataIndex: "phone",
     },
     {
@@ -77,7 +77,7 @@ const Doctors = () => {
               Approve
             </button>
           ) : (
-            <button className="btn btn-danger">Reject</button>
+            <button className="btn btn-danger" onClick={() => handleAccountStatus(record, "rejected")}>Reject</button>
           )}
         </div>
       ),

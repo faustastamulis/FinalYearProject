@@ -13,7 +13,7 @@ import ProtectedRoute from "./components/Other/ProtectedRoute";
 import ApplyDoctor from "./components/pages/ApplyDoctor";
 import Users from "../src/components/pages/admin/Users";
 import Doctors from "../src/components/pages/admin/Doctors";
-import NotificationPage from "./components/pages/NotificationPage";
+import NotificationPage from "../src/components/pages/NotificationPage";
 import Profile from "../src/components/pages/doctor/Profile";
 import BookingPage from "./components/pages/BookingPage";
 import Appointments from "./components/pages/Appointments";

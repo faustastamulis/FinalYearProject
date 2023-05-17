@@ -1,10 +1,12 @@
 import React from "react";
 import {Layout} from "./Layout";
-import { message, Tabs } from "antd";
+import { Button, message, Tabs } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { showLoading, hideLoading } from "../redux/features/alertSlice";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+
+
 
 const NotificationPage = () => {
   const dispatch = useDispatch();
@@ -34,7 +36,7 @@ const NotificationPage = () => {
     } catch (error) {
       dispatch(hideLoading());
       console.log(error);
-      message.error("somthing went wrong");
+      message.error("Something went wrong");
     }
   };
 
@@ -60,18 +62,18 @@ const NotificationPage = () => {
     } catch (error) {
       dispatch(hideLoading());
       console.log(error);
-      message.error("Somthing Went Wrong In Ntifications");
+      message.error("Something went wrong in Notifications");
     }
   };
   return (
     <Layout>
       <h4 className="p-3 text-center">Notification Page</h4>
       <Tabs>
-        <Tabs.TabPane tab="unRead" key={0}>
+        <Tabs.TabPane tab="UNREAD" key={0}>
           <div className="d-flex justify-content-end">
-            <h4 className="p-2" onClick={handleMarkAllRead}>
+            <Button className="p-2" onClick={handleMarkAllRead}>
               Mark All Read
-            </h4>
+            </Button>
           </div>
           {user?.notifcation.map((notificationMgs) => (
             <div className="card" style={{ cursor: "pointer" }}>
@@ -84,15 +86,15 @@ const NotificationPage = () => {
             </div>
           ))}
         </Tabs.TabPane>
-        <Tabs.TabPane tab="Read" key={1}>
+        <Tabs.TabPane tab="READ" key={1}>
           <div className="d-flex justify-content-end">
-            <h4
+            <Button
               className="p-2 text-primary"
               style={{ cursor: "pointer" }}
-              onClick={handleDeleteAllRead}
+              onClick={handleDeleteAllRead} 
             >
               Delete All Read
-            </h4>
+            </Button>
           </div>
           {user?.seennotification.map((notificationMgs) => (
             <div className="card" style={{ cursor: "pointer" }}>

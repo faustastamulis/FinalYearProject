@@ -1,6 +1,7 @@
 import React from "react";
-import { Form, Input, message } from "antd";
 import axios from "axios";
+import "../Styles/RegisterStyles.css";
+import { Form, Input, message } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { showLoading, hideLoading } from "../redux/features/alertSlice";
@@ -8,6 +9,7 @@ import { showLoading, hideLoading } from "../redux/features/alertSlice";
 const Register = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   //form handler
   const onfinishHandler = async (values) => {
     try {
@@ -28,21 +30,17 @@ const Register = () => {
   };
   return (
     <>
-      <div className="form-container ">
-        <Form
-          layout="vertical"
-          onFinish={onfinishHandler}
-          className="register-form"
-        >
+      <div className="form-container">
+        <Form layout="vertical" onFinish={onfinishHandler} className="register-form">
           <h3 className="text-center">Register From</h3>
           <Form.Item label="Name" name="name">
-            <Input type="text" required />
+            <Input className="input__box"type="text" required />
           </Form.Item>
           <Form.Item label="Email" name="email">
             <Input type="email" required />
           </Form.Item>
           <Form.Item label="Password" name="password">
-            <Input type="password" required />
+            <Input type="password" required/>
           </Form.Item>
           <Link to="/login" className="m-2">
             Already user login here

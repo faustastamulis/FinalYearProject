@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "../Styles/LayoutStyles.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Badge, message } from "antd";
+import { Badge, message} from "antd";
 import { useSelector } from "react-redux";
 import { adminMenu, userMenu } from "../Data/data";
 
@@ -9,6 +9,7 @@ export const Layout = ({ children }) => {
   const { user } = useSelector((state) => state.user);
   const location = useLocation();
   const navigate = useNavigate();
+
   // logout funtion
   const handleLogout = () => {
     localStorage.clear();
@@ -16,7 +17,33 @@ export const Layout = ({ children }) => {
     navigate("/login");
   };
 
-    const SidebarMenu = user?.isAdmin ? adminMenu : userMenu;
+  // =========== doctor menu ===============
+  const doctorMenu = [
+    {
+      name: "Home",
+      path: "/",
+      icon: "fa-solid fa-house",
+    },
+    {
+      name: "Appointments",
+      path: "/doctor-appointments",
+      icon: "fa-solid fa-list",
+    },
+
+    {
+      name: "Profile",
+      path: `/doctor/profile/${user?._id}`,
+      icon: "fa-solid fa-user",
+    },
+  ];
+  // =========== doctor menu ===============
+
+    // rendering menu list
+     const SidebarMenu = user?.isAdmin
+    ? adminMenu
+    : user?.isDoctor
+    ? doctorMenu
+    : userMenu;
     return (
         <>
           <div className="main">
@@ -47,7 +74,7 @@ export const Layout = ({ children }) => {
               <div className="content">
                 <div className="header">
                   <div className="header-content">
-                    <Badge count={user?.notifications?.length}>
+                    <Badge  count={user && user.notifcation.length} onClick={() => {navigate('/notification')}}>
                     <i class="fa-solid fa-bell"></i>
                     </Badge>
                     <Link to="/profile">{user?.name}</Link>
@@ -60,4 +87,5 @@ export const Layout = ({ children }) => {
         </>
       );
     };
+
 

@@ -89,7 +89,7 @@ const applyDoctorController = async (req, res) => {
     const notifcation = adminUser.notifcation;
     notifcation.push({
       type: "apply-doctor-request",
-      message: `${newDoctor.firstName} ${newDoctor.lastName} Has Applied For A Doctor Account`,
+      message: `${newDoctor.firstName} ${newDoctor.lastName} has applied for a Doctor Account`,
       data: {
         doctorId: newDoctor._id,
         name: newDoctor.firstName + " " + newDoctor.lastName,
@@ -179,7 +179,7 @@ const getAllDocotrsController = async (req, res) => {
 };
 
 //BOOK APPOINTMENT
-const bookeAppointmnetController = async (req, res) => {
+const bookAppointmentController = async (req, res) => {
   try {
     req.body.date = moment(req.body.date, "DD-MM-YYYY").toISOString();
     req.body.time = moment(req.body.time, "HH:mm").toISOString();
@@ -189,7 +189,7 @@ const bookeAppointmnetController = async (req, res) => {
     const user = await userModel.findOne({ _id: req.body.doctorInfo.userId });
     user.notifcation.push({
       type: "New-appointment-request",
-      message: `A nEw Appointment Request from ${req.body.userInfo.name}`,
+      message: `A new appointment request from ${req.body.userInfo.name}`,
       onCLickPath: "/user/appointments",
     });
     await user.save();
@@ -210,10 +210,8 @@ const bookeAppointmnetController = async (req, res) => {
 // booking bookingAvailabilityController
 const bookingAvailabilityController = async (req, res) => {
   try {
-    const date = moment(req.body.date, "DD-MM-YY").toISOString();
-    const fromTime = moment(req.body.time, "HH:mm")
-      .subtract(1, "hours")
-      .toISOString();
+    const date = moment(req.body.date, "DD-MM-YYYY").toISOString();
+    const fromTime = moment(req.body.time, "HH:mm").subtract(1, "hours").toISOString();
     const toTime = moment(req.body.time, "HH:mm").add(1, "hours").toISOString();
     const doctorId = req.body.doctorId;
     const appointments = await appointmentModel.find({
@@ -226,13 +224,13 @@ const bookingAvailabilityController = async (req, res) => {
     });
     if (appointments.length > 0) {
       return res.status(200).send({
-        message: "Appointments not Availibale at this time",
+        message: "Appointments are availibale at this time",
         success: true,
       });
     } else {
       return res.status(200).send({
         success: true,
-        message: "Appointments available",
+        message: "Appointments not available at this time",
       });
     }
   } catch (error) {
@@ -273,7 +271,7 @@ module.exports = {
   getAllNotificationController,
   deleteAllNotificationController,
   getAllDocotrsController,
-  bookeAppointmnetController,
+  bookAppointmentController,
   bookingAvailabilityController,
   userAppointmentsController,
 };

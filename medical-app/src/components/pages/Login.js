@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Input, message } from "antd";
 import { useDispatch } from "react-redux";
 import { showLoading, hideLoading } from "../redux/features/alertSlice";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+//import ReCAPTCHA from "react-google-recaptcha";
 
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+//Google Captcha
+//const {setCaptchaDone} = useState(false);
+//const key = '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'
+
+// function onChange(value) {
+//   console.log("Captcha value:", value);
+//   setCaptchaDone(true);
+// }
+
   //form handler
   const onfinishHandler = async (values) => {
     try {
@@ -43,10 +54,14 @@ const Login = () => {
         <Form.Item label="Password" name="password">
           <Input type="password" required />
         </Form.Item>
+        {/* <ReCAPTCHA
+          sitekey={key}
+         onChange={onChange}
+        /> */}
         <Link to="/register" className="m-2">
           Not a user Register here
         </Link>
-        <button className="btn btn-primary" type="submit">
+         <button className="btn btn-primary" type="submit">
           Login
         </button>
       </Form>
